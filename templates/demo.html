@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demostración - PlantAdvisor TDF</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <i class="fas fa-leaf"></i> PlantAdvisor TDF
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('consulta') }}">Consultar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('demo') }}">Demo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('info') }}">Info</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="text-center mb-5">
+                    <h1 class="display-5 fw-bold text-success">
+                        <i class="fas fa-play"></i> Demostración del Sistema
+                    </h1>
+                    <p class="lead text-muted">
+                        Prueba el sistema experto con casos predefinidos para ver cómo funciona
+                    </p>
+                    <div class="mt-3">
+                        <span class="badge bg-success fs-6 me-2">
+                            <i class="fas fa-leaf"></i> 25 Especies Disponibles
+                        </span>
+                        <span class="badge bg-primary fs-6 me-2">
+                            <i class="fas fa-tree"></i> Incluye Nativas TDF
+                        </span>
+                        <span class="badge bg-info fs-6">
+                            <i class="fas fa-camera"></i> Con Imágenes
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Casos de Demostración -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h3 class="text-success mb-4">
+                            <i class="fas fa-vials"></i> Casos de Prueba Predefinidos
+                        </h3>
+                    </div>
+                </div>
+
+                <form method="post" class="mb-4">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="demo-card card h-100 {{ 'active' if demo_case == 'principiante' else '' }}">
+                                <div class="card-body">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="demo_case" id="principiante" 
+                                               value="principiante" {{ 'checked' if demo_case == 'principiante' else '' }}>
+                                        <label class="form-check-label" for="principiante">
+                                            <h5 class="text-success">
+                                                <i class="fas fa-seedling"></i> Usuario Principiante
+                                            </h5>
+                                        </label>
+                                    </div>
+                                    <p class="text-muted mt-2">
+                                        <strong>Perfil:</strong> Sin experiencia, poco tiempo, luz escasa<br>
+                                        <strong>Condiciones:</strong> Interior, humedad baja, espacio pequeño<br>
+                                        <strong>Objetivo:</strong> Plantas fáciles de cuidar
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="demo-card card h-100 {{ 'active' if demo_case == 'intermedio' else '' }}">
+                                <div class="card-body">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="demo_case" id="intermedio" 
+                                               value="intermedio" {{ 'checked' if demo_case == 'intermedio' else '' }}>
+                                        <label class="form-check-label" for="intermedio">
+                                            <h5 class="text-success">
+                                                <i class="fas fa-spa"></i> Usuario Intermedio
+                                            </h5>
+                                        </label>
+                                    </div>
+                                    <p class="text-muted mt-2">
+                                        <strong>Perfil:</strong> Algo de experiencia, mascotas en casa<br>
+                                        <strong>Condiciones:</strong> Luz moderada, humedad media<br>
+                                        <strong>Objetivo:</strong> Plantas seguras y decorativas
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="demo-card card h-100 {{ 'active' if demo_case == 'avanzado' else '' }}">
+                                <div class="card-body">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="demo_case" id="avanzado" 
+                                               value="avanzado" {{ 'checked' if demo_case == 'avanzado' else '' }}>
+                                        <label class="form-check-label" for="avanzado">
+                                            <h5 class="text-success">
+                                                <i class="fas fa-tree"></i> Usuario Avanzado
+                                            </h5>
+                                        </label>
+                                    </div>
+                                    <p class="text-muted mt-2">
+                                        <strong>Perfil:</strong> Mucha experiencia, tiempo disponible<br>
+                                        <strong>Condiciones:</strong> Interior y exterior, luz abundante<br>
+                                        <strong>Objetivo:</strong> Plantas decorativas complejas
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="demo-card card h-100 {{ 'active' if demo_case == 'exterior' else '' }}">
+                                <div class="card-body">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="demo_case" id="exterior" 
+                                               value="exterior" {{ 'checked' if demo_case == 'exterior' else '' }}>
+                                        <label class="form-check-label" for="exterior">
+                                            <h5 class="text-success">
+                                                <i class="fas fa-mountain"></i> Exterior Fueguino
+                                            </h5>
+                                        </label>
+                                    </div>
+                                    <p class="text-muted mt-2">
+                                        <strong>Perfil:</strong> Jardinería exterior, clima resistente<br>
+                                        <strong>Condiciones:</strong> Exterior protegido, luz abundante<br>
+                                        <strong>Objetivo:</strong> Plantas aromáticas y resistentes
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            <i class="fas fa-play"></i> Ejecutar Demostración
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Resultados de la Demostración -->
+                {% if demo_result %}
+                <div class="card shadow-lg mt-5">
+                    <div class="card-header bg-success text-white">
+                        <h3 class="mb-0">
+                            <i class="fas fa-lightbulb"></i> Resultados para: 
+                            {% if demo_case == 'principiante' %}Usuario Principiante
+                            {% elif demo_case == 'intermedio' %}Usuario Intermedio
+                            {% elif demo_case == 'avanzado' %}Usuario Avanzado
+                            {% elif demo_case == 'exterior' %}Exterior Fueguino
+                            {% endif %}
+                        </h3>
+                        <small class="opacity-75">Seleccionadas de 25 especies especializadas para Tierra del Fuego</small>
+                    </div>
+                    <div class="card-body">
+                        <!-- Condiciones evaluadas -->
+                        <div class="mb-4 p-3 bg-light rounded">
+                            <h5 class="text-success mb-3">
+                                <i class="fas fa-cogs"></i> Condiciones Evaluadas
+                            </h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li><strong>Ubicación:</strong> {{ demo_conditions.ubicacion|capitalize_first }}</li>
+                                        <li><strong>Luz disponible:</strong> {{ demo_conditions.luz_disponible|capitalize_first }}</li>
+                                        <li><strong>Humedad interior:</strong> {{ demo_conditions.humedad_interior|capitalize_first }}</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li><strong>Experiencia:</strong> {{ demo_conditions.experiencia_usuario|capitalize_first }}</li>
+                                        <li><strong>Tiempo disponible:</strong> {{ demo_conditions.tiempo_disponible|capitalize_first }}</li>
+                                        <li><strong>Mascotas:</strong> {% if demo_conditions.mascotas_presentes %}Sí{% else %}No{% endif %}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recomendaciones con imágenes -->
+                        {% if demo_result.success and demo_result.recomendaciones %}
+                            {% for rec in demo_result.recomendaciones %}
+                            <div class="recommendation-card mb-4 {% if not loop.last %}border-bottom pb-4{% endif %}">
+                                <div class="row align-items-start">
+                                    <div class="col-md-3 text-center mb-3">
+                                        <div class="plant-image-container">
+                                            {% set imagen_nombre = rec.datos_planta.imagen if rec.datos_planta and rec.datos_planta.imagen else (rec.planta_id + '.jpg') %}
+                                            <img src="{{ url_for('static', filename='images/plantas/' + imagen_nombre) }}" 
+                                                 alt="{{ rec.nombre }}" 
+                                                 class="img-fluid rounded shadow-sm plant-image"
+                                                 style="max-height: 150px; object-fit: cover; width: 100%;"
+                                                 onerror="this.onerror=null; this.src='{{ url_for('static', filename='images/plantas/default.jpg') }}';">
+                                            <div class="mt-2">
+                                                <span class="badge {% if rec.confianza >= 80 %}bg-success{% elif rec.confianza >= 60 %}bg-warning{% else %}bg-danger{% endif %} fs-6">
+                                                    {{ rec.confianza|format_confidence }} de confianza
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="d-flex justify-content-between align-items-start mb-3">
+                                            <h4 class="text-success mb-0">
+                                                <i class="fas fa-leaf"></i> {{ rec.nombre }}
+                                            </h4>
+                                            {% if rec.datos_planta and rec.datos_planta.planta_nativa %}
+                                                <span class="badge bg-primary ms-2">
+                                                    <i class="fas fa-tree"></i> Nativa TDF
+                                                </span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="explanation-text">
+                                            {{ rec.explicacion_detallada|replace('\n', '<br>')|safe if rec.explicacion_detallada else 'Recomendada para tus condiciones específicas.' }}
+                                        </div>
+                                        {% if rec.datos_planta %}
+                                            <div class="plant-details mt-3">
+                                                <div class="row text-center">
+                                                    <div class="col-4">
+                                                        <small class="text-muted">Dificultad</small><br>
+                                                        <span class="badge bg-light text-dark">{{ rec.datos_planta.dificultad or 'N/A' }}</span>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <small class="text-muted">Tamaño</small><br>
+                                                        <span class="badge bg-light text-dark">{{ rec.datos_planta.tamaño_maximo or 'N/A' }}</span>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <small class="text-muted">Mascotas</small><br>
+                                                        <span class="badge {% if rec.datos_planta.toxica_mascotas %}bg-warning{% else %}bg-success{% endif %} text-white">
+                                                            {% if rec.datos_planta.toxica_mascotas %}Cuidado{% else %}Segura{% endif %}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="alert alert-warning">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <strong>Sin resultados:</strong> {{ demo_result.error if demo_result.error else 'No se encontraron recomendaciones para estas condiciones.' }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer bg-light">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap">
+                            <small class="text-muted">
+                                <i class="fas fa-info-circle"></i>
+                                Análisis completado en tiempo real usando el sistema experto
+                                • <span class="text-primary">Sistema experto con 25 especies especializadas</span>
+                            </small>
+                            <a href="{{ url_for('consulta') }}" class="btn btn-outline-success mt-2 mt-md-0">
+                                <i class="fas fa-edit"></i> Hacer Consulta Personalizada
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Información sobre el sistema -->
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <h4 class="text-success mb-3">
+                            <i class="fas fa-brain"></i> ¿Cómo Funciona el Sistema Experto?
+                        </h4>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-search fa-3x text-primary"></i>
+                                </div>
+                                <h6>1. Análisis de Condiciones</h6>
+                                <p class="text-muted small">
+                                    El sistema evalúa las condiciones específicas de Tierra del Fuego 
+                                    usando reglas expertas locales.
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-project-diagram fa-3x text-warning"></i>
+                                </div>
+                                <h6>2. Motor de Inferencia</h6>
+                                <p class="text-muted small">
+                                    Combina reglas de producción con árbol de decisión 
+                                    para seleccionar las mejores opciones.
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-lightbulb fa-3x text-success"></i>
+                                </div>
+                                <h6>3. Recomendaciones</h6>
+                                <p class="text-muted small">
+                                    Genera hasta 3 recomendaciones con explicaciones 
+                                    detalladas y niveles de confianza.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">
+                <i class="fas fa-leaf"></i> PlantAdvisor TDF - Sistema Experto para Tierra del Fuego
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Marcar automáticamente la primera opción si no hay ninguna seleccionada
+        document.addEventListener('DOMContentLoaded', function() {
+            const radios = document.querySelectorAll('input[name="demo_case"]');
+            const hasChecked = Array.from(radios).some(radio => radio.checked);
+            
+            if (!hasChecked && radios.length > 0) {
+                radios[0].checked = true;
+            }
+        });
+
+        // Mejorar la interacción visual
+        document.querySelectorAll('.demo-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const radio = this.querySelector('input[type="radio"]');
+                if (radio) {
+                    radio.checked = true;
+                    
+                    // Actualizar estilos
+                    document.querySelectorAll('.demo-card').forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+    </script>
+    
+    <!-- Estilos adicionales para las imágenes (igual que en consulta.html) -->
+    <style>
+        .plant-image {
+            transition: transform 0.3s ease;
+            border: 2px solid #e9ecef;
+        }
+        
+        .plant-image:hover {
+            transform: scale(1.05);
+            border-color: #198754;
+        }
+        
+        .plant-image-container {
+            position: relative;
+        }
+        
+        .plant-details .badge {
+            font-size: 0.75rem;
+        }
+        
+        .recommendation-card {
+            transition: background-color 0.3s ease;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .recommendation-card:hover {
+            background-color: #f8f9fa;
+        }
+    </style>
+</body>
+</html>

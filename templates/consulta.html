@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta - PlantAdvisor TDF</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <i class="fas fa-leaf"></i> PlantAdvisor TDF
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('consulta') }}">Consultar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('demo') }}">Demo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('info') }}">Info</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="text-center mb-5">
+                    <h1 class="display-5 fw-bold text-success">
+                        <i class="fas fa-search"></i> Consulta Personalizada
+                    </h1>
+                    <p class="lead text-muted">
+                        Completa el formulario para recibir recomendaciones específicas para tu situación
+                    </p>
+                    <div class="mt-3">
+                        <span class="badge bg-success fs-6 me-2">
+                            <i class="fas fa-leaf"></i> 25 Especies Disponibles
+                        </span>
+                        <span class="badge bg-primary fs-6 me-2">
+                            <i class="fas fa-tree"></i> Incluye Nativas TDF
+                        </span>
+                        <span class="badge bg-info fs-6">
+                            <i class="fas fa-camera"></i> Con Imágenes
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Formulario Principal -->
+                <div class="card shadow-lg">
+                    <div class="card-body p-4">
+                        <form id="consultaForm">
+                            <!-- Sección 1: Ubicación -->
+                            <div class="section-header">
+                                <h4 class="text-success mb-3">
+                                    <i class="fas fa-map-marker-alt"></i> 1. Ubicación y Espacio
+                                </h4>
+                            </div>
+                            
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">¿Dónde quieres ubicar las plantas?</label>
+                                    <select class="form-select" name="ubicacion" required>
+                                        <option value="">Seleccionar...</option>
+                                        <option value="interior">Solo interior</option>
+                                        <option value="exterior_protegido">Solo exterior protegido</option>
+                                        <option value="ambos">Interior y exterior</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">¿Cuánto espacio tienes disponible?</label>
+                                    <select class="form-select" name="espacio_disponible">
+                                        <option value="">Seleccionar...</option>
+                                        <option value="pequeño">Pequeño (escritorio, repisa)</option>
+                                        <option value="mediano">Mediano (rincón, mesa grande)</option>
+                                        <option value="grande">Grande (área amplia, jardín)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Sección 2: Condiciones Ambientales -->
+                            <div class="section-header">
+                                <h4 class="text-success mb-3">
+                                    <i class="fas fa-sun"></i> 2. Condiciones de tu Hogar
+                                </h4>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">¿Cuánta luz natural recibe el espacio?</label>
+                                    <select class="form-select" name="luz_disponible" required>
+                                        <option value="">Seleccionar...</option>
+                                        <option value="escasa">Escasa (menos de 4 horas directas)</option>
+                                        <option value="moderada">Moderada (4-8 horas indirectas)</option>
+                                        <option value="abundante">Abundante (más de 8 horas directas)</option>
+                                    </select>
+                                    <div class="form-text">
+                                        <i class="fas fa-info-circle"></i> Considera las horas de luz durante el invierno fueguino
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">¿Cómo es la humedad en tu hogar?</label>
+                                    <select class="form-select" name="humedad_interior">
+                                        <option value="">Seleccionar...</option>
+                                        <option value="baja">Baja (calefacción constante, aire seco)</option>
+                                        <option value="media">Media (equilibrada)</option>
+                                        <option value="alta">Alta (ambiente húmedo)</option>
+                                    </select>
+                                    <div class="form-text">
+                                        <i class="fas fa-info-circle"></i> La calefacción fueguina suele crear ambientes secos
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sección 3: Tu Experiencia -->
+                            <div class="section-header">
+                                <h4 class="text-success mb-3">
+                                    <i class="fas fa-user"></i> 3. Tu Experiencia y Disponibilidad
+                                </h4>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">¿Cuál es tu experiencia con plantas?</label>
+                                    <select class="form-select" name="experiencia_usuario" required>
+                                        <option value="">Seleccionar...</option>
+                                        <option value="principiante">Principiante (poca o ninguna experiencia)</option>
+                                        <option value="intermedio">Intermedio (algo de experiencia)</option>
+                                        <option value="avanzado">Avanzado (mucha experiencia)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">¿Cuánto tiempo puedes dedicar al cuidado?</label>
+                                    <select class="form-select" name="tiempo_disponible">
+                                        <option value="">Seleccionar...</option>
+                                        <option value="bajo">Bajo (menos de 30 min/semana)</option>
+                                        <option value="medio">Medio (30-60 min/semana)</option>
+                                        <option value="alto">Alto (más de 1 hora/semana)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Sección 4: Consideraciones Especiales -->
+                            <div class="section-header">
+                                <h4 class="text-success mb-3">
+                                    <i class="fas fa-exclamation-triangle"></i> 4. Consideraciones Especiales
+                                </h4>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" name="mascotas_presentes" id="mascotas">
+                                        <label class="form-check-label fw-bold" for="mascotas">
+                                            <i class="fas fa-paw"></i> Tengo mascotas en casa
+                                        </label>
+                                        <div class="form-text">
+                                            Evitaremos plantas tóxicas para animales
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">¿Qué buscas principalmente?</label>
+                                    <select class="form-select" name="objetivo_principal">
+                                        <option value="">Seleccionar...</option>
+                                        <option value="decorativo">Valor decorativo</option>
+                                        <option value="purificar_aire">Purificar el aire</option>
+                                        <option value="comestible">Plantas comestibles (hierbas)</option>
+                                        <option value="nativas">Especies nativas de TDF</option>
+                                        <option value="facil_cuidado">Fácil cuidado</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Información adicional -->
+                            <div class="section-header">
+                                <h4 class="text-success mb-3">
+                                    <i class="fas fa-comment"></i> 5. Información Adicional (Opcional)
+                                </h4>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">¿Alguna consideración especial?</label>
+                                <textarea class="form-control" name="informacion_adicional" rows="3" 
+                                          placeholder="Ej: Orientación de ventanas, presencia de corrientes de aire, experiencias previas..."></textarea>
+                            </div>
+
+                            <!-- Botones -->
+                            <div class="d-flex gap-3 justify-content-end">
+                                <button type="button" class="btn btn-outline-secondary" onclick="resetForm()">
+                                    <i class="fas fa-undo"></i> Limpiar
+                                </button>
+                                <button type="submit" class="btn btn-success btn-lg">
+                                    <i class="fas fa-search"></i> Obtener Recomendaciones
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Loading y Resultados -->
+                <div id="loadingDiv" class="text-center mt-4 d-none">
+                    <div class="spinner-border text-success" role="status">
+                        <span class="visually-hidden">Analizando...</span>
+                    </div>
+                    <p class="mt-2 text-muted">Analizando tus condiciones con 25 especies disponibles...</p>
+                </div>
+
+                <div id="resultadosDiv" class="mt-4 d-none">
+                    <!-- Los resultados se cargarán aquí dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">
+                <i class="fas fa-leaf"></i> PlantAdvisor TDF - Sistema Experto para Tierra del Fuego
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // JavaScript para el formulario de consulta
+        document.getElementById('consultaForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Mostrar loading
+            document.getElementById('loadingDiv').classList.remove('d-none');
+            document.getElementById('resultadosDiv').classList.add('d-none');
+            
+            // Recopilar datos del formulario
+            const formData = new FormData(this);
+            const data = {};
+            
+            for (let [key, value] of formData.entries()) {
+                if (key === 'mascotas_presentes') {
+                    data[key] = true;
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            // Si no se marcó mascotas, establecer como false
+            if (!data.mascotas_presentes) {
+                data.mascotas_presentes = false;
+            }
+            
+            try {
+                // Enviar consulta al sistema experto
+                const response = await fetch('/api/recommend', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                // Ocultar loading
+                document.getElementById('loadingDiv').classList.add('d-none');
+                
+                if (result.success) {
+                    mostrarResultados(result);
+                } else {
+                    mostrarError(result.error);
+                }
+                
+            } catch (error) {
+                document.getElementById('loadingDiv').classList.add('d-none');
+                mostrarError('Error de conexión. Por favor, intenta nuevamente.');
+            }
+        });
+        
+        function mostrarResultados(result) {
+            const resultadosDiv = document.getElementById('resultadosDiv');
+            
+            let html = `
+                <div class="card shadow-lg">
+                    <div class="card-header bg-success text-white">
+                        <h3 class="mb-0"><i class="fas fa-lightbulb"></i> Tus Recomendaciones Personalizadas</h3>
+                        <small class="opacity-75">Seleccionadas de 25 especies especializadas para Tierra del Fuego</small>
+                    </div>
+                    <div class="card-body">
+            `;
+            
+            if (result.recomendaciones && result.recomendaciones.length > 0) {
+                result.recomendaciones.forEach((rec, index) => {
+                    const confianza = Math.round(rec.confianza);
+                    const confianzaColor = confianza >= 80 ? 'success' : confianza >= 60 ? 'warning' : 'danger';
+                    
+                    // Determinar la imagen basada en el ID de la planta
+                    const plantId = rec.planta_id || 'default';
+                    const imagenUrl = `/static/images/plantas/${plantId}.jpg`;
+                    
+                    html += `
+                        <div class="recommendation-card mb-4 ${index < result.recomendaciones.length - 1 ? 'border-bottom pb-4' : ''}">
+                            <div class="row align-items-start">
+                                <div class="col-md-3 text-center mb-3">
+                                    <div class="plant-image-container">
+                                        <img src="${imagenUrl}" 
+                                             alt="${rec.nombre}" 
+                                             class="img-fluid rounded shadow-sm plant-image"
+                                             style="max-height: 150px; object-fit: cover; width: 100%;"
+                                             onerror="this.onerror=null; this.src='/static/images/plantas/default.jpg';">
+                                        <div class="mt-2">
+                                            <span class="badge bg-${confianzaColor} fs-6">
+                                                ${confianza}% de confianza
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="d-flex justify-content-between align-items-start mb-3">
+                                        <h4 class="text-success mb-0">
+                                            <i class="fas fa-leaf"></i> ${rec.nombre}
+                                        </h4>
+                                        ${rec.datos_planta && rec.datos_planta.planta_nativa ? 
+                                            '<span class="badge bg-primary ms-2"><i class="fas fa-tree"></i> Nativa TDF</span>' : 
+                                            ''}
+                                    </div>
+                                    <div class="explanation-text">
+                                        ${rec.explicacion_detallada ? rec.explicacion_detallada.replace(/\n/g, '<br>') : 'Recomendada para tus condiciones específicas.'}
+                                    </div>
+                                    ${rec.datos_planta ? `
+                                        <div class="plant-details mt-3">
+                                            <div class="row text-center">
+                                                <div class="col-4">
+                                                    <small class="text-muted">Dificultad</small><br>
+                                                    <span class="badge bg-light text-dark">${rec.datos_planta.dificultad || 'N/A'}</span>
+                                                </div>
+                                                <div class="col-4">
+                                                    <small class="text-muted">Tamaño</small><br>
+                                                    <span class="badge bg-light text-dark">${rec.datos_planta.tamaño_maximo || 'N/A'}</span>
+                                                </div>
+                                                <div class="col-4">
+                                                    <small class="text-muted">Mascotas</small><br>
+                                                    <span class="badge ${rec.datos_planta.toxica_mascotas ? 'bg-warning' : 'bg-success'} text-white">
+                                                        ${rec.datos_planta.toxica_mascotas ? 'Cuidado' : 'Segura'}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                html += `
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        No se encontraron recomendaciones específicas para tus condiciones.
+                        Te sugerimos ajustar algunos parámetros e intentar nuevamente.
+                    </div>
+                `;
+            }
+            
+            html += `
+                    </div>
+                    <div class="card-footer bg-light">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap">
+                            <small class="text-muted">
+                                <i class="fas fa-info-circle"></i>
+                                Recomendaciones basadas en ${result.total_plantas_evaluadas || 25} especies evaluadas
+                                ${result.recomendaciones.some(r => r.datos_planta && r.datos_planta.planta_nativa) ? 
+                                    '• <span class="text-primary">Incluye especies nativas de TDF</span>' : ''}
+                            </small>
+                            <button type="button" class="btn btn-outline-success mt-2 mt-md-0" onclick="nuevaConsulta()">
+                                <i class="fas fa-redo"></i> Nueva Consulta
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            resultadosDiv.innerHTML = html;
+            resultadosDiv.classList.remove('d-none');
+            
+            // Scroll suave a los resultados
+            resultadosDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function mostrarError(mensaje) {
+            const resultadosDiv = document.getElementById('resultadosDiv');
+            resultadosDiv.innerHTML = `
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <strong>Error:</strong> ${mensaje}
+                </div>
+            `;
+            resultadosDiv.classList.remove('d-none');
+        }
+        
+        function resetForm() {
+            document.getElementById('consultaForm').reset();
+            document.getElementById('resultadosDiv').classList.add('d-none');
+        }
+        
+        function nuevaConsulta() {
+            resetForm();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+    
+    <!-- Estilos adicionales para las imágenes -->
+    <style>
+        .plant-image {
+            transition: transform 0.3s ease;
+            border: 2px solid #e9ecef;
+        }
+        
+        .plant-image:hover {
+            transform: scale(1.05);
+            border-color: #198754;
+        }
+        
+        .plant-image-container {
+            position: relative;
+        }
+        
+        .plant-details .badge {
+            font-size: 0.75rem;
+        }
+        
+        .recommendation-card {
+            transition: background-color 0.3s ease;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .recommendation-card:hover {
+            background-color: #f8f9fa;
+        }
+    </style>
+</body>
+</html>

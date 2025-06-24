@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información del Proyecto - PlantAdvisor TDF</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <i class="fas fa-leaf"></i> PlantAdvisor TDF
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('consulta') }}">Consultar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('demo') }}">Demo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('info') }}">Info</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient py-5" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold mb-4 text-success">
+                        <i class="fas fa-info-circle"></i> Información del Proyecto
+                    </h1>
+                    <p class="lead text-success">
+                        Sistema Experto para Recomendación de Plantas en Tierra del Fuego
+                    </p>
+                    <p class="mb-4 text-dark">
+                        Proyecto académico desarrollado para la materia de Desarrollo de Sistemas de IA
+                    </p>
+                    <div class="mt-4">
+                        <span class="badge bg-success fs-6 me-2">
+                            <i class="fas fa-leaf"></i> 25 Especies Incluidas
+                        </span>
+                        <span class="badge bg-primary fs-6 me-2">
+                            <i class="fas fa-tree"></i> 5 Nativas de TDF
+                        </span>
+                        <span class="badge bg-info fs-6">
+                            <i class="fas fa-camera"></i> Con Imágenes
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container py-5">
+        <!-- Información del Proyecto -->
+        <section class="info-section">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2 class="h1 text-success mb-4">
+                        <i class="fas fa-seedling"></i> Acerca del Proyecto
+                    </h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="text-success">
+                                        <i class="fas fa-target"></i> Objetivo Principal
+                                    </h5>
+                                    <p>
+                                        Desarrollar un Sistema Experto que proporcione recomendaciones precisas 
+                                        sobre plantas adaptadas a las condiciones específicas de Tierra del Fuego, 
+                                        incluidas especies nativas emblemáticas de la región.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="text-success">
+                                        <i class="fas fa-lightbulb"></i> Valor Único
+                                    </h5>
+                                    <p>
+                                        Primer sistema experto que integra especies nativas de Tierra del Fuego 
+                                        (Lenga, Ñire, Calafate) con plantas adaptadas, preservando el patrimonio 
+                                        natural y cultural de la región.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Base de Conocimiento Expandida -->
+        <section class="info-section">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2 class="h1 text-success mb-4">
+                        <i class="fas fa-database"></i> Base de Conocimiento Especializada
+                    </h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100 border-success">
+                                <div class="card-header bg-success text-white">
+                                    <h5 class="mb-0">
+                                        <i class="fas fa-tree"></i> Especies Nativas de TDF
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-leaf text-success"></i> <strong>Lenga</strong> (Nothofagus pumilio) - Árbol emblemático</li>
+                                        <li><i class="fas fa-leaf text-success"></i> <strong>Ñire</strong> (Nothofagus antarctica) - Árbol adaptable</li>
+                                        <li><i class="fas fa-leaf text-success"></i> <strong>Calafate</strong> (Berberis microphylla) - Frutos comestibles</li>
+                                        <li><i class="fas fa-leaf text-success"></i> <strong>Mata Negra</strong> (Junellia tridens) - Resistencia extrema</li>
+                                        <li><i class="fas fa-leaf text-success"></i> <strong>Coirón</strong> (Festuca gracillima) - Pasto nativo</li>
+                                    </ul>
+                                    <div class="alert alert-success border-0 mt-3">
+                                        <small><i class="fas fa-info-circle"></i> 
+                                        Estas especies están completamente adaptadas al clima austral y forman parte del patrimonio natural fueguino.</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 border-primary">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0">
+                                        <i class="fas fa-home"></i> Plantas de Interior y Adaptadas
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row text-center">
+                                        <div class="col-6">
+                                            <div class="border-end">
+                                                <h3 class="text-primary">15</h3>
+                                                <small class="text-muted">Plantas de Interior</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <h3 class="text-success">5</h3>
+                                            <small class="text-muted">Comestibles</small>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <ul class="list-unstyled small">
+                                        <li><i class="fas fa-check text-success"></i> Sansevieria, ZZ Plant, Pothos</li>
+                                        <li><i class="fas fa-check text-success"></i> Ficus, Monstera, Dracaena</li>
+                                        <li><i class="fas fa-check text-success"></i> Suculentas y Cactus</li>
+                                        <li><i class="fas fa-check text-success"></i> Hierbas: Albahaca, Perejil, Orégano</li>
+                                        <li><i class="fas fa-check text-success"></i> Aromáticas: Lavanda, Romero</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estadísticas del Sistema -->
+        <section class="info-section">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2 class="h1 text-success mb-4">
+                        <i class="fas fa-chart-bar"></i> Estadísticas del Sistema
+                    </h2>
+                    <div class="row g-4 text-center">
+                        <div class="col-md-2">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <i class="fas fa-leaf fa-3x text-success mb-3"></i>
+                                    <h3 class="text-success">25</h3>
+                                    <p class="text-muted small">Especies Totales</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <i class="fas fa-tree fa-3x text-primary mb-3"></i>
+                                    <h3 class="text-primary">5</h3>
+                                    <p class="text-muted small">Nativas TDF</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <i class="fas fa-rules fa-3x text-warning mb-3"></i>
+                                    <h3 class="text-warning">15+</h3>
+                                    <p class="text-muted small">Reglas Expertas</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <i class="fas fa-camera fa-3x text-info mb-3"></i>
+                                    <h3 class="text-info">25</h3>
+                                    <p class="text-muted small">Imágenes</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <i class="fas fa-shield-alt fa-3x text-danger mb-3"></i>
+                                    <h3 class="text-danger">20</h3>
+                                    <p class="text-muted small">Seguras Mascotas</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <i class="fas fa-percent fa-3x text-secondary mb-3"></i>
+                                    <h3 class="text-secondary">90%+</h3>
+                                    <p class="text-muted small">Precisión</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arquitectura Técnica -->
+        <section class="info-section">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2 class="h1 text-success mb-4">
+                        <i class="fas fa-cogs"></i> Arquitectura del Sistema
+                    </h2>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card text-center h-100">
+                                <div class="card-body">
+                                    <i class="fas fa-database fa-3x text-primary mb-3"></i>
+                                    <h5>Base de Conocimiento Expandida</h5>
+                                    <p class="text-muted">
+                                        25 especies cuidadosamente seleccionadas, incluyendo 5 nativas 
+                                        de Tierra del Fuego con información detallada y verificada por expertos locales.
+                                    </p>
+                                    <div class="mt-3">
+                                        <span class="badge bg-success me-1">Nativas</span>
+                                        <span class="badge bg-primary me-1">Adaptadas</span>
+                                        <span class="badge bg-info">Visuales</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card text-center h-100">
+                                <div class="card-body">
+                                    <i class="fas fa-brain fa-3x text-warning mb-3"></i>
+                                    <h5>Motor de Inferencia Híbrido</h5>
+                                    <p class="text-muted">
+                                        Combina reglas de producción especializadas con árboles de decisión, 
+                                        incluyendo lógica específica para especies nativas y condiciones fueguinas.
+                                    </p>
+                                    <div class="mt-3">
+                                        <span class="badge bg-warning me-1">IF-THEN</span>
+                                        <span class="badge bg-secondary">Árboles</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card text-center h-100">
+                                <div class="card-body">
+                                    <i class="fas fa-mobile-alt fa-3x text-success mb-3"></i>
+                                    <h5>Interfaz Visual Avanzada</h5>
+                                    <p class="text-muted">
+                                        Aplicación web responsive con galería de imágenes, recomendaciones 
+                                        visuales y información detallada de cada especie.
+                                    </p>
+                                    <div class="mt-3">
+                                        <span class="badge bg-success me-1">Responsive</span>
+                                        <span class="badge bg-info">Imágenes</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Información Académica -->
+        <section class="info-section">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2 class="h1 text-success mb-4">
+                        <i class="fas fa-university"></i> Información Académica
+                    </h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <h5 class="text-success">Detalles del Proyecto</h5>
+                                    <ul class="list-unstyled">
+                                        <li><strong>Institución:</strong> Centro Politécnico Superior Malvinas Argentinas</li>
+                                        <li><strong>Materia:</strong> Desarrollo de Sistemas de IA</li>
+                                        <li><strong>Año:</strong> 2025</li>
+                                        <li><strong>Tipo:</strong> Sistema Experto Especializado</li>
+                                        <li><strong>Enfoque:</strong> Flora Regional de Tierra del Fuego</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="text-success">Entregas del Proyecto</h5>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-file-pdf text-danger"></i> <strong>Entrega 1:</strong> Descripción y Formulación</li>
+                                        <li><i class="fas fa-file-pdf text-danger"></i> <strong>Entrega 2:</strong> Representación del Conocimiento</li>
+                                        <li><i class="fas fa-code text-primary"></i> <strong>Entrega 3:</strong> Sistema Completo con 25 Especies</li>
+                                        <li><i class="fas fa-video text-warning"></i> <strong>Video:</strong> Demostración de 7 minutos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Valor Regional y Cultural -->
+        <section class="info-section">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2 class="h1 text-success mb-4">
+                        <i class="fas fa-mountain"></i> Valor Regional y Cultural
+                    </h2>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card text-center h-100 border-success">
+                                <div class="card-body">
+                                    <i class="fas fa-tree fa-3x text-success mb-3"></i>
+                                    <h5>Patrimonio Natural</h5>
+                                    <p class="text-muted">
+                                        Preserva y difunde conocimiento sobre especies emblemáticas 
+                                        como la Lenga, Ñire y Calafate, parte del patrimonio natural fueguino.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card text-center h-100 border-primary">
+                                <div class="card-body">
+                                    <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                                    <h5>Conocimiento Local</h5>
+                                    <p class="text-muted">
+                                        Integra sabiduría de viveristas locales, técnicos del INTA 
+                                        y experiencia de cultivadores fueguinos.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card text-center h-100 border-info">
+                                <div class="card-body">
+                                    <i class="fas fa-heart fa-3x text-danger mb-3"></i>
+                                    <h5>Bienestar Comunitario</h5>
+                                    <p class="text-muted">
+                                        Contribuye al bienestar de los habitantes durante 
+                                        los largos inviernos australes mediante plantas adaptadas.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reconocimientos Expandidos -->
+        <section class="info-section">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2 class="h1 text-success mb-4">
+                        <i class="fas fa-hands-helping"></i> Reconocimientos y Fuentes
+                    </h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="text-success">
+                                        <i class="fas fa-store"></i> Expertos Locales
+                                    </h5>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-leaf text-success"></i> Viveros especializados de Río Grande</li>
+                                        <li><i class="fas fa-leaf text-success"></i> Técnicos del INTA Tierra del Fuego</li>
+                                        <li><i class="fas fa-leaf text-success"></i> Cultivadores experimentados locales</li>
+                                        <li><i class="fas fa-leaf text-success"></i> Guardaparques del Parque Nacional</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="text-success">
+                                        <i class="fas fa-book"></i> Fuentes Científicas
+                                    </h5>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-microscope text-primary"></i> Herbario del Museo del Fin del Mundo</li>
+                                        <li><i class="fas fa-microscope text-primary"></i> Guías de flora patagónica</li>
+                                        <li><i class="fas fa-microscope text-primary"></i> Investigaciones del CADIC</li>
+                                        <li><i class="fas fa-microscope text-primary"></i> Literatura especializada en clima austral</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enlaces Útiles -->
+        <section class="info-section">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2 class="h1 text-success mb-4">
+                        <i class="fas fa-link"></i> Enlaces y Recursos
+                    </h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="text-success">
+                                        <i class="fab fa-github"></i> Repositorio del Proyecto
+                                    </h5>
+                                    <p class="text-muted">
+                                        Código fuente completo, base de conocimiento expandida y documentación técnica.
+                                    </p>
+                                    <a href="https://github.com/Zayitus/Sistema-Experto-para-Recomendaci-n-de-Plantas-en-Hogares-de-Tierra-del-Fuego" 
+                                       class="btn btn-outline-success" target="_blank">
+                                        <i class="fab fa-github"></i> Ver en GitHub
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="text-success">
+                                        <i class="fas fa-heartbeat"></i> Estado del Sistema
+                                    </h5>
+                                    <p class="text-muted">
+                                        Verificar funcionamiento y estadísticas en tiempo real del sistema expandido.
+                                    </p>
+                                    <a href="/health" class="btn btn-outline-success" target="_blank">
+                                        <i class="fas fa-heartbeat"></i> Health Check
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="py-5 text-center">
+            <div class="col-lg-8 mx-auto">
+                <div class="card bg-light border-success">
+                    <div class="card-body">
+                        <h3 class="text-success mb-4">
+                            <i class="fas fa-rocket"></i> ¡Descubre tu Planta Ideal!
+                        </h3>
+                        <p class="lead text-muted mb-4">
+                            Explora las 25 especies incluidas en el sistema, desde plantas nativas 
+                            emblemáticas hasta especies perfectamente adaptadas a Tierra del Fuego.
+                        </p>
+                        <div class="d-flex justify-content-center gap-3 flex-wrap">
+                            <a href="{{ url_for('consulta') }}" class="btn btn-success btn-lg">
+                                <i class="fas fa-search"></i> Nueva Consulta
+                            </a>
+                            <a href="{{ url_for('demo') }}" class="btn btn-outline-success btn-lg">
+                                <i class="fas fa-play"></i> Ver Demostración
+                            </a>
+                        </div>
+                        <div class="mt-3">
+                            <small class="text-muted">
+                                <i class="fas fa-info-circle"></i> 
+                                Sistema actualizado con especies nativas y visualización de imágenes
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-leaf"></i> PlantAdvisor TDF</h5>
+                    <p class="text-light">
+                        Sistema Experto especializado en flora de Tierra del Fuego - 25 especies incluidas
+                    </p>
+                    <p class="small text-light">
+                        Proyecto académico - Centro Politécnico Superior Malvinas Argentinas
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h6>Navegación</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url_for('index') }}" class="text-decoration-none text-light">Inicio</a></li>
+                        <li><a href="{{ url_for('consulta') }}" class="text-decoration-none text-light">Nueva Consulta</a></li>
+                        <li><a href="{{ url_for('demo') }}" class="text-decoration-none text-light">Demostración</a></li>
+                        <li><a href="{{ url_for('info') }}" class="text-decoration-none text-light">Información</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0 small">
+                        © {{ current_year }} PlantAdvisor TDF. Sistema Experto con Flora Nativa de Tierra del Fuego.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

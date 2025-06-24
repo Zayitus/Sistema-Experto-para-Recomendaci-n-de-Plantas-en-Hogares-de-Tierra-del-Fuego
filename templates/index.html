@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlantAdvisor - Sistema Experto para Plantas en Tierra del Fuego</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <i class="fas fa-leaf"></i> PlantAdvisor TDF
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('index') }}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('consulta') }}">Consultar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('demo') }}">Demo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('info') }}">Info</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold mb-4 text-success">
+                        <i class="fas fa-seedling"></i> PlantAdvisor
+                    </h1>
+                    <h2 class="h3 mb-4 text-success">Sistema Experto para Plantas en Tierra del Fuego</h2>
+                    <p class="lead mb-4 text-dark">
+                        Descubre qué plantas pueden prosperar en las condiciones únicas de Tierra del Fuego. 
+                        Nuestro sistema experto te recomienda especies adaptadas al clima fueguino y las 
+                        características específicas de tu hogar.
+                    </p>
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <a href="{{ url_for('consulta') }}" class="btn btn-success btn-lg">
+                            <i class="fas fa-search"></i> Consultar Ahora
+                        </a>
+                        <a href="{{ url_for('demo') }}" class="btn btn-outline-success btn-lg">
+                            <i class="fas fa-play"></i> Ver Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center mt-4">
+                    <div class="hero-image">
+                        <i class="fas fa-home fa-8x text-success opacity-75"></i>
+                        <div class="floating-plants">
+                            <i class="fas fa-leaf text-success fa-2x"></i>
+                            <i class="fas fa-spa text-success fa-2x"></i>
+                            <i class="fas fa-tree text-success fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="h1 mb-4">¿Por qué PlantAdvisor?</h2>
+                    <p class="lead text-muted">
+                        Tierra del Fuego presenta condiciones únicas que hacen especial el cultivo de plantas
+                    </p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-snowflake fa-3x text-primary"></i>
+                        </div>
+                        <h4>Clima Extremo</h4>
+                        <p class="text-muted">
+                            Inviernos largos, vientos fuertes y fotoperíodos únicos requieren 
+                            plantas especialmente adaptadas a estas condiciones.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-fire fa-3x text-danger"></i>
+                        </div>
+                        <h4>Calefacción Constante</h4>
+                        <p class="text-muted">
+                            Los hogares mantienen calefacción 7-8 meses al año, creando 
+                            ambientes secos que no todas las plantas toleran.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-brain fa-3x text-success"></i>
+                        </div>
+                        <h4>Conocimiento Experto</h4>
+                        <p class="text-muted">
+                            Nuestro sistema integra conocimiento de viveristas locales 
+                            y técnicos especializados en la región.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="h1 mb-4">Beneficios para Hogares Fueguinos</h2>
+                    <div class="benefits-list">
+                        <div class="benefit-item d-flex mb-3">
+                            <div class="benefit-icon me-3">
+                                <i class="fas fa-heart text-danger"></i>
+                            </div>
+                            <div>
+                                <h5>Bienestar Psicológico</h5>
+                                <p class="text-muted mb-0">
+                                    Las plantas mejoran el estado de ánimo durante los largos inviernos fueguinos
+                                </p>
+                            </div>
+                        </div>
+                        <div class="benefit-item d-flex mb-3">
+                            <div class="benefit-icon me-3">
+                                <i class="fas fa-wind text-info"></i>
+                            </div>
+                            <div>
+                                <h5>Calidad del Aire</h5>
+                                <p class="text-muted mb-0">
+                                    Mejoran la humedad y filtran contaminantes en espacios cerrados
+                                </p>
+                            </div>
+                        </div>
+                        <div class="benefit-item d-flex mb-3">
+                            <div class="benefit-icon me-3">
+                                <i class="fas fa-dollar-sign text-warning"></i>
+                            </div>
+                            <div>
+                                <h5>Optimización de Recursos</h5>
+                                <p class="text-muted mb-0">
+                                    Evita gastos en plantas inadecuadas para las condiciones locales
+                                </p>
+                            </div>
+                        </div>
+                        <div class="benefit-item d-flex">
+                            <div class="benefit-icon me-3">
+                                <i class="fas fa-utensils text-success"></i>
+                            </div>
+                            <div>
+                                <h5>Producción Doméstica</h5>
+                                <p class="text-muted mb-0">
+                                    Cultiva hierbas frescas durante todo el año
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="benefits-visual">
+                        <div class="plant-grid">
+                            <div class="plant-item"><i class="fas fa-seedling fa-2x text-success"></i></div>
+                            <div class="plant-item"><i class="fas fa-leaf fa-2x text-success"></i></div>
+                            <div class="plant-item"><i class="fas fa-spa fa-2x text-success"></i></div>
+                            <div class="plant-item"><i class="fas fa-tree fa-2x text-success"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="h1 mb-4">¿Cómo Funciona?</h2>
+                    <p class="lead text-muted">
+                        Proceso simple en 3 pasos para obtener recomendaciones personalizadas
+                    </p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="step-card text-center p-4">
+                        <div class="step-number mb-3">
+                            <span class="badge bg-primary rounded-circle p-3">
+                                <i class="fas fa-edit fa-2x"></i>
+                            </span>
+                        </div>
+                        <h4>1. Describe tu Situación</h4>
+                        <p class="text-muted">
+                            Completa un formulario simple sobre las condiciones de tu hogar 
+                            y tu experiencia con plantas.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-card text-center p-4">
+                        <div class="step-number mb-3">
+                            <span class="badge bg-success rounded-circle p-3">
+                                <i class="fas fa-cogs fa-2x"></i>
+                            </span>
+                        </div>
+                        <h4>2. Análisis Experto</h4>
+                        <p class="text-muted">
+                            Nuestro sistema evalúa tus condiciones usando reglas expertas 
+                            y conocimiento especializado en plantas fueguinas.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-card text-center p-4">
+                        <div class="step-number mb-3">
+                            <span class="badge bg-info rounded-circle p-3">
+                                <i class="fas fa-lightbulb fa-2x"></i>
+                            </span>
+                        </div>
+                        <h4>3. Recomendaciones Personalizadas</h4>
+                        <p class="text-muted">
+                            Recibe hasta 3 recomendaciones específicas con explicaciones 
+                            detalladas y consejos de cuidado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-success text-white">
+        <div class="container text-center">
+            <h2 class="h1 mb-4">¿Listo para Encontrar tu Planta Ideal?</h2>
+            <p class="lead mb-4">
+                Obtén recomendaciones personalizadas basadas en las condiciones específicas de Tierra del Fuego
+            </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="{{ url_for('consulta') }}" class="btn btn-light btn-lg">
+                    <i class="fas fa-rocket"></i> Empezar Consulta
+                </a>
+                <a href="{{ url_for('demo') }}" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-eye"></i> Ver Ejemplos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-leaf"></i> PlantAdvisor TDF</h5>
+                    <p class="text-light">
+                        Sistema Experto para recomendación de plantas adaptadas a Tierra del Fuego
+                    </p>
+                    <p class="small text-light">
+                        Desarrollado como proyecto académico - Centro Politécnico Superior Malvinas Argentinas
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h6>Enlaces Útiles</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url_for('consulta') }}" class="text-decoration-none text-light">Nueva Consulta</a></li>
+                        <li><a href="{{ url_for('demo') }}" class="text-decoration-none text-light">Demostración</a></li>
+                        <li><a href="{{ url_for('info') }}" class="text-decoration-none text-light">Información del Proyecto</a></li>
+                        <li><a href="/health" class="text-decoration-none text-light">Estado del Sistema</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0 small">
+                        © {{ current_year }} PlantAdvisor TDF. Proyecto académico de Sistemas Expertos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

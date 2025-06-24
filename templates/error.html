@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error {{ error_code }} - PlantAdvisor TDF</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <i class="fas fa-leaf"></i> PlantAdvisor TDF
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('consulta') }}">Consultar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('demo') }}">Demo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('info') }}">Info</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Error Content -->
+    <main class="flex-grow-1 d-flex align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <!-- Error Icon -->
+                    <div class="mb-4">
+                        {% if error_code == 404 %}
+                            <i class="fas fa-search fa-5x text-warning"></i>
+                        {% elif error_code == 500 %}
+                            <i class="fas fa-exclamation-triangle fa-5x text-danger"></i>
+                        {% else %}
+                            <i class="fas fa-bug fa-5x text-secondary"></i>
+                        {% endif %}
+                    </div>
+
+                    <!-- Error Code -->
+                    <h1 class="display-1 fw-bold">
+                        {% if error_code %}
+                            <span class="{% if error_code == 404 %}text-warning{% elif error_code == 500 %}text-danger{% else %}text-secondary{% endif %}">
+                                {{ error_code }}
+                            </span>
+                        {% else %}
+                            <span class="text-secondary">Error</span>
+                        {% endif %}
+                    </h1>
+
+                    <!-- Error Message -->
+                    <h2 class="h3 mb-4">
+                        {% if error_code == 404 %}
+                            Página No Encontrada
+                        {% elif error_code == 500 %}
+                            Error Interno del Servidor
+                        {% else %}
+                            Algo Salió Mal
+                        {% endif %}
+                    </h2>
+
+                    <!-- Error Description -->
+                    <div class="mb-4">
+                        {% if error_code == 404 %}
+                            <p class="lead text-muted">
+                                La página que buscas no existe o ha sido movida. 
+                                Como una planta que no encuentra las condiciones adecuadas, 
+                                esta página no pudo establecerse aquí.
+                            </p>
+                            <div class="alert alert-light border">
+                                <i class="fas fa-lightbulb text-warning"></i>
+                                <strong>Sugerencia:</strong> Verifica la URL o navega desde el menú principal.
+                            </div>
+                        {% elif error_code == 500 %}
+                            <p class="lead text-muted">
+                                Ocurrió un problema interno en el sistema. 
+                                Nuestro sistema experto está trabajando para resolverlo.
+                            </p>
+                            <div class="alert alert-light border">
+                                <i class="fas fa-tools text-primary"></i>
+                                <strong>Acción:</strong> Intenta recargar la página en unos momentos.
+                            </div>
+                        {% else %}
+                            <p class="lead text-muted">
+                                {{ error_message if error_message else 'Se produjo un error inesperado en el sistema.' }}
+                            </p>
+                        {% endif %}
+                    </div>
+
+                    <!-- Plant Themed Message -->
+                    <div class="card bg-light border-0 mb-4">
+                        <div class="card-body">
+                            <div class="plant-error-message">
+                                <i class="fas fa-seedling text-success fa-2x mb-3"></i>
+                                <p class="mb-0 text-muted">
+                                    {% if error_code == 404 %}
+                                        "Al igual que las plantas necesitan el ambiente adecuado para crecer, 
+                                        las páginas web necesitan la URL correcta para florecer."
+                                    {% elif error_code == 500 %}
+                                        "Incluso las plantas más resistentes necesitan cuidados ocasionales. 
+                                        Estamos atendiendo nuestro sistema para que vuelva a funcionar perfectamente."
+                                    {% else %}
+                                        "Como un jardinero experto, estamos trabajando para que todo vuelva a la normalidad."
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a href="{{ url_for('index') }}" class="btn btn-success btn-lg">
+                            <i class="fas fa-home"></i> Volver al Inicio
+                        </a>
+                        <a href="{{ url_for('consulta') }}" class="btn btn-outline-success btn-lg">
+                            <i class="fas fa-search"></i> Nueva Consulta
+                        </a>
+                        <button onclick="window.history.back()" class="btn btn-outline-secondary btn-lg">
+                            <i class="fas fa-arrow-left"></i> Página Anterior
+                        </button>
+                    </div>
+
+                    <!-- Additional Help -->
+                    <div class="mt-5">
+                        <h5 class="text-success">¿Necesitas ayuda?</h5>
+                        <div class="row g-3 mt-3">
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <a href="{{ url_for('demo') }}" class="text-decoration-none">
+                                        <i class="fas fa-play fa-2x text-primary mb-2"></i>
+                                        <p class="small">Ver Demostración</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <a href="{{ url_for('info') }}" class="text-decoration-none">
+                                        <i class="fas fa-info-circle fa-2x text-info mb-2"></i>
+                                        <p class="small">Información</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <a href="/health" class="text-decoration-none">
+                                        <i class="fas fa-heartbeat fa-2x text-warning mb-2"></i>
+                                        <p class="small">Estado del Sistema</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-3 mt-auto">
+        <div class="container text-center">
+            <p class="mb-0 small">
+                <i class="fas fa-leaf"></i> PlantAdvisor TDF - Sistema Experto para Tierra del Fuego
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Auto-reload for 500 errors -->
+    {% if error_code == 500 %}
+    <script>
+        // Auto-reload después de 30 segundos para errores del servidor
+        setTimeout(function() {
+            if (confirm('¿Quieres intentar recargar la página automáticamente?')) {
+                window.location.reload();
+            }
+        }, 30000);
+    </script>
+    {% endif %}
+
+    <!-- Easter egg: Konami code for fun -->
+    <script>
+        let konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+        let userInput = [];
+        
+        document.addEventListener('keydown', function(e) {
+            userInput.push(e.keyCode);
+            if (userInput.length > konamiCode.length) {
+                userInput.shift();
+            }
+            
+            if (JSON.stringify(userInput) === JSON.stringify(konamiCode)) {
+                document.body.style.transform = 'rotate(1deg)';
+                document.body.style.transition = 'transform 0.5s';
+                
+                setTimeout(() => {
+                    document.body.style.transform = 'rotate(0deg)';
+                    alert('🌱 ¡Las plantas también necesitan un poco de diversión! 🌿');
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>
