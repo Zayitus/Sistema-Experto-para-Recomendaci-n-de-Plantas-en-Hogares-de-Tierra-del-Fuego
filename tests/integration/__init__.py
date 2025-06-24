@@ -1,0 +1,1 @@
+"""Módulo tests.integration"""
