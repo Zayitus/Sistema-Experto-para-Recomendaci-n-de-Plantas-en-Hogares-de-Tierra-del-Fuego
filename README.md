@@ -549,4 +549,4 @@ make run
 
 **🌿 ¡Tu planta ideal para Tierra del Fuego te está esperando!**
 
-*Sistema especializado con arquitectura profesional que preserva el patrimonio natural fueguino mientras ayuda a crear hogares más verdes y saludables en el fin del mund
+*Sistema especializado con arquitectura profesional que preserva el patrimonio natural fueguino mientras ayuda a crear hogares más verdes y saludables en el fin del mundo.
