@@ -8,6 +8,7 @@
 [![Especies](https://img.shields.io/badge/Especies-25-brightgreen.svg)](#base-de-conocimiento-expandida)
 [![Nativas](https://img.shields.io/badge/Nativas%20TDF-5-blue.svg)](#especies-nativas-de-tierra-del-fuego)
 [![Arquitectura](https://img.shields.io/badge/Arquitectura-Profesional-purple.svg)](#arquitectura-del-sistema)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ## 📋 Descripción del Proyecto
 
