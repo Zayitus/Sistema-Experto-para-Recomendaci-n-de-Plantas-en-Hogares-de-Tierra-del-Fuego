@@ -523,6 +523,7 @@ make help
 ## 📄 Licencia
 
 **Proyecto Académico** - Centro Politecnico Superior Malvinas Argentinas 
+
 **Materia**: Desarrollo de Sistemas de IA  
 **Año**: 2025
 
