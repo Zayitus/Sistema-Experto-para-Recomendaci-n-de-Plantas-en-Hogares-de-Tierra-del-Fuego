@@ -1,0 +1,24 @@
+LINK DIRECTO AL VIDEO DEMOSTRATIVO - ENTREGA 3
+PlantAdvisor TDF - Sistema Experto para Plantas en Tierra del Fuego
+
+URL: https://drive.google.com/file/d/1YeJwF9kql1SlU-62QVTUqzGbT6jCfGkJ/view?usp=sharing
+
+DURACION: 7 minutos
+CALIDAD: 720p HD
+FORMATO: MP4 en Google Drive
+
+ESTUDIANTE: [Tu Nombre]
+MATERIA: Desarrollo de Sistemas de IA
+FECHA: Junio 2025
+
+INSTRUCCIONES:
+1. Hacer clic en el link
+2. Se reproduce automáticamente en Google Drive
+3. No requiere descarga
+4. Audio incluido con narración técnica
+
+CONTENIDO DEL VIDEO:
+- Demostración del sistema funcionando
+- Explicación del motor de inferencia híbrido  
+- Análisis del código fuente
+- Especies nativas de Tierra del Fuego incluidas
