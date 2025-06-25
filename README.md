@@ -366,14 +366,16 @@ make test
 
 ## 🎥 Video Demostrativo
 
-**[🎬 Ver Video Explicativo - 7 minutos](PENDIENTE_GRABAR)**
+**[🎬 Ver Video Explicativo - 7 minutos](https://drive.google.com/file/d/1YeJwF9kql1SlU-62QVTUqzGbT6jCfGkJ/view?usp=sharing)**
 
-El video incluye:
+> **Nota**: El video se encuentra alojado en Google Drive para preservar la calidad HD y garantizar acceso fluido durante la evaluación.
+
+**Contenido del video:**
 - Presentación del problema específico de Tierra del Fuego
-- Demostración completa del sistema funcionando
+- Demostración completa del sistema funcionando  
 - Explicación de recomendaciones para especies nativas
 - Arquitectura técnica del sistema experto híbrido
-- Valor cultural y ecológico del proyecto
+- Análisis del código: motor de inferencia y base de conocimiento
 
 ## 🏗️ Arquitectura del Sistema
 
