@@ -7,7 +7,7 @@
 [![Estado](https://img.shields.io/badge/Estado-Finalizado-success.svg)](#)
 [![Especies](https://img.shields.io/badge/Especies-25-brightgreen.svg)](#base-de-conocimiento-expandida)
 [![Nativas](https://img.shields.io/badge/Nativas%20TDF-5-blue.svg)](#especies-nativas-de-tierra-del-fuego)
-[![Arquitectura](https://img.shields.io/badge/Arquitectura-Profesional-purple.svg)](#arquitectura-del-sistema)
+[![Arquitectura](https://img.shields.io/badge/Arquitectura-Funcional-purple.svg)](#arquitectura-del-sistema)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ## 📋 Descripción del Proyecto
@@ -31,7 +31,7 @@ Los habitantes de Tierra del Fuego enfrentan desafíos únicos para el cultivo d
 - ✅ **Conocimiento de expertos locales** (viveristas, técnicos INTA, cultivadores)
 - ✅ **Preservación del patrimonio natural** y cultural de la región
 - ✅ **Interfaz visual moderna** con galería de imágenes de todas las especies
-- ✅ **Arquitectura profesional escalable** con configuración Python moderna
+- ✅ **Arquitectura funcional** optimizada para rendimiento
 
 ## 🚀 Instalación y Configuración
 
@@ -74,70 +74,20 @@ Los habitantes de Tierra del Fuego enfrentan desafíos únicos para el cultivo d
    - Abrir navegador en: `http://localhost:5000`
    - El sistema estará listo para usar
 
-### ⚡ Instalación con Makefile (Desarrollo)
-
-```bash
-# Ver comandos disponibles
-make help
-
-# Setup completo de desarrollo
-make quick-setup
-
-# Ejecutar aplicación
-make run
-
-# Modo desarrollo con hot-reload
-make dev
-
-# Ejecutar tests
-make test
-```
-
 ## 📁 Estructura del Proyecto
 
 ```
 PlantAdvisor-TDF/
 ├── 🌿 app.py                          # Aplicación web Flask principal
-├── expert_system.py                   # Sistema experto principal
+├── expert_system.py                   # Sistema experto principal  
 ├── plants_data.py                     # Base de conocimiento: 25 especies
 ├── rules.py                           # Motor de reglas de producción
 ├── decision_tree.py                   # Implementación del árbol de decisión
 ├── requirements.txt                   # Dependencias Python
+├── __init__.py                        # Módulo Python
+├── setup.py                           # Configuración de instalación
 ├── 
-├── ⚙️ pyproject.toml                   # Configuración Python moderna
-├── setup.cfg                          # Configuración herramientas desarrollo
-├── Makefile                           # Comandos automatizados (25+ comandos)
-├── 
-├── 📁 src/                            # Código fuente organizado (estructura futura)
-│   ├── plant_advisor/                 # Módulo principal
-│   │   ├── knowledge/                 # Base de conocimiento migrada
-│   │   ├── models/                    # Modelos de datos
-│   │   ├── services/                  # Servicios de negocio
-│   │   └── utils/                     # Utilidades
-│   └── web/                           # Capa web
-│       ├── routes/                    # Rutas Flask organizadas
-│       └── middleware/                # Middleware personalizado
-├── 
-├── 📁 tests/                          # Tests organizados
-│   ├── unit/                         # Tests unitarios
-│   ├── integration/                  # Tests de integración
-│   └── fixtures/                     # Datos de prueba
-├── 
-├── 📁 config/                         # Configuraciones por ambiente
-│   ├── settings.py                   # Configuración principal
-│   └── environments/                 # Configs desarrollo/producción
-├── 
-├── 📁 requirements/                   # Dependencias organizadas
-│   ├── base.txt                      # Dependencias base
-│   ├── development.txt               # Dependencias desarrollo
-│   ├── testing.txt                   # Dependencias testing
-│   └── production.txt                # Dependencias producción
-├── 
-├── 📁 scripts/                        # Scripts de utilidad
-│   ├── migrate_structure.py          # Script migración ejecutado
-│   └── start_dev.py                  # Inicio desarrollo
-├── 
-├── 📁 templates/                      # Plantillas HTML profesionales
+├── 📁 templates/                      # Plantillas HTML
 │   ├── index.html                    # Página principal moderna
 │   ├── consulta.html                 # Formulario interactivo
 │   ├── demo.html                     # Demostración con casos
@@ -146,11 +96,15 @@ PlantAdvisor-TDF/
 ├── 
 ├── 📁 static/                         # Archivos estáticos
 │   ├── css/style.css                 # Estilos personalizados (500+ líneas)
-│   ├── js/main.js                    # JavaScript interactivo
 │   └── images/plantas/               # Galería imágenes (25 especies)
 ├── 
-├── 📁 backup_old_structure/           # Backup estructura original
 ├── 📁 docs/                           # Documentación académica
+│   ├── Entrega_1_PlantAdvisor_TDF.pdf # Primera entrega del proyecto
+│   ├── Entrega_2_PlantAdvisor_TDF.pdf # Segunda entrega del proyecto  
+│   └── entrega3/                     # Tercera entrega
+│       └── video_demostrativo_link.md # Enlaces al video demostrativo
+├── 
+├── 📁 .github/                        # Configuración GitHub
 └── README.md                          # Esta documentación
 ```
 
@@ -199,48 +153,6 @@ PlantAdvisor-TDF/
 - **Filodendro** - Adaptable a luz artificial
 - **Espatifilo** - Florece en poca luz invernal
 
-## 🛠️ Desarrollo Profesional
-
-### ⚙️ Configuración Moderna
-
-Este proyecto utiliza configuración Python moderna:
-
-- **`pyproject.toml`** - Configuración estándar Python 2025
-- **`setup.cfg`** - Herramientas de desarrollo integradas  
-- **`Makefile`** - 25+ comandos automatizados para desarrollo
-
-### 📋 Comandos Disponibles
-
-```bash
-# Ver todos los comandos
-make help
-
-# === DESARROLLO ===
-make run              # Ejecutar aplicación
-make dev              # Modo desarrollo con hot-reload
-make install          # Instalar dependencias base
-make install-dev      # Instalar dependencias desarrollo
-
-# === TESTING ===
-make test             # Ejecutar todos los tests
-make test-unit        # Tests unitarios
-make test-integration # Tests de integración
-make test-coverage    # Tests con coverage
-
-# === CALIDAD ===
-make lint             # Linting (flake8, mypy)
-make format           # Formatear código (black, isort)
-make security         # Análisis de seguridad
-
-# === UTILIDADES ===
-make clean            # Limpiar archivos temporales
-make status           # Estado del proyecto
-make health-check     # Verificar aplicación funcionando
-
-# === SETUP RÁPIDO ===
-make quick-setup      # Configuración completa
-```
-
 ## 🔧 Funcionalidades del Sistema
 
 ### 🎯 Características Principales
@@ -252,7 +164,7 @@ make quick-setup      # Configuración completa
 - **Sistema de Demostración**: 4 casos predefinidos para testing
 - **API REST Completa**: 6 endpoints para integración
 - **Interfaz Responsiva**: Funciona en computadoras, tablets y móviles
-- **Arquitectura Escalable**: Estructura profesional para equipos grandes
+- **Arquitectura Optimizada**: Estructura funcional para máximo rendimiento
 
 ### 📋 Variables de Entrada Evaluadas
 
@@ -336,9 +248,6 @@ for rec in resultado['recomendaciones']:
 ### ✅ Ejecutar Pruebas
 
 ```bash
-# Verificar que el sistema funciona correctamente
-make health-check
-
 # Verificar aplicación web
 curl http://localhost:5000/health
 
@@ -349,9 +258,6 @@ curl -X POST http://localhost:5000/api/recommend \
 
 # Verificar información de planta específica
 curl http://localhost:5000/api/plant/lenga
-
-# Ejecutar tests (cuando estén implementados)
-make test
 ```
 
 ## 📈 Métricas y Rendimiento
@@ -362,13 +268,23 @@ make test
 - **Precisión Estimada**: >90% en condiciones validadas
 - **Tiempo de Respuesta**: <1 segundo promedio
 - **Cobertura**: Interior, exterior protegido, comestibles, nativas
-- **Arquitectura**: Escalable para equipos grandes
+- **Código**: 120KB+ de lógica de sistema experto
 
 ## 🎥 Video Demostrativo
 
 **[🎬 Ver Video Explicativo - 7 minutos](https://drive.google.com/file/d/1YeJwF9kql1SlU-62QVTUqzGbT6jCfGkJ/view?usp=sharing)**
 
 > **Nota**: El video se encuentra alojado en Google Drive para preservar la calidad HD y garantizar acceso fluido durante la evaluación.
+
+**Contenido del video:**
+- Presentación del problema específico de Tierra del Fuego
+- Demostración completa del sistema funcionando  
+- Explicación de recomendaciones para especies nativas
+- Arquitectura técnica del sistema experto híbrido
+- Análisis del código: motor de inferencia y base de conocimiento
+
+
+> **Nota**: Los enlaces al video se encuentran en la carpeta `docs/entrega3/` para facilitar el acceso durante la evaluación académica.
 
 **Contenido del video:**
 - Presentación del problema específico de Tierra del Fuego
@@ -385,8 +301,7 @@ make test
 - **Frontend**: HTML5, CSS3, JavaScript ES6, Bootstrap 5
 - **Arquitectura**: Sistemas Expertos (reglas + árbol de decisión híbrido)
 - **Base de Datos**: Estructura optimizada en Python nativo
-- **Configuración**: pyproject.toml, setup.cfg (estándar moderno)
-- **Desarrollo**: Makefile, tests organizados, CI/CD ready
+- **Desarrollo**: Estructura funcional optimizada para rendimiento
 - **Deployment**: Compatible con Heroku, PythonAnywhere, Docker
 
 ### 🏛️ Estructura de Desarrollo
@@ -395,7 +310,7 @@ make test
 
 1. **Fase 1**: Análisis del problema y definición de objetivos específicos para TDF
 2. **Fase 2**: Representación y organización del conocimiento con especies nativas
-3. **Fase 3**: Implementación completa con interfaz web y arquitectura profesional
+3. **Fase 3**: Implementación completa con interfaz web funcional
 
 ### 📊 Arquitectura Híbrida
 
@@ -457,8 +372,6 @@ flowchart TD
 **Error: "No module named 'flask'"**
 ```bash
 pip install -r requirements.txt
-# o
-make install
 ```
 
 **Error: "Puerto 5000 en uso"**
@@ -474,20 +387,7 @@ app.run(host='0.0.0.0', port=5001, debug=True)
 
 **Problemas de encoding (Windows)**
 - El proyecto mantiene compatibilidad con caracteres especiales
-- Estructura híbrida previene problemas de imports
-
-### 📊 Logs y Debugging
-
-```bash
-# Ejecutar en modo debug
-make dev
-
-# Verificar estado del sistema
-make health-check
-
-# Ver todos los comandos disponibles
-make help
-```
+- Estructura optimizada previene problemas de imports
 
 ## 🏛️ Información Académica
 
@@ -496,17 +396,16 @@ make help
 - **Institución**: Centro Politécnico Superior Malvinas Argentinas
 - **Materia**: Desarrollo de Sistemas de IA
 - **Año**: 2025
-- **Tipo**: Sistema Experto Especializado con Arquitectura Profesional
+- **Tipo**: Sistema Experto Especializado
 - **Enfoque**: Flora Nativa y Adaptada de Tierra del Fuego
 
 ### 📄 Entregas del Proyecto
 
-- ✅ **Entrega 1**: Descripción y Formulación del Problema
-- ✅ **Entrega 2**: Representación del Conocimiento con Especies Nativas
-- ✅ **Entrega 3**: Sistema Completo con Arquitectura Profesional
+- ✅ **Entrega 1**: [Descripción y Formulación del Problema](docs/Entrega_1_PlantAdvisor_TDF.pdf)
+- ✅ **Entrega 2**: [Representación del Conocimiento con Especies Nativas](docs/Entrega_2_PlantAdvisor_TDF.pdf)
+- ✅ **Entrega 3**: Sistema Completo Funcional + [Video Demostrativo](docs/entrega3/video_demostrativo_link.md)
 - ✅ **Documentación**: README técnico completo
 - ✅ **Código**: Repositorio GitHub público
-- ⏳ **Video**: Demostración técnica de 7 minutos
 
 ## 📞 Soporte y Contacto
 
@@ -545,7 +444,7 @@ SOFTWARE.
 **Materia**: Desarrollo de Sistemas de IA  
 **Año**: 2025
 
-*Desarrollado con el objetivo de preservar y difundir el conocimiento sobre la flora única de Tierra del Fuego, contribuyendo al bienestar de la comunidad fueguina mediante tecnología de sistemas expertos y arquitectura de software profesional.*
+*Desarrollado con el objetivo de preservar y difundir el conocimiento sobre la flora única de Tierra del Fuego, contribuyendo al bienestar de la comunidad fueguina mediante tecnología de sistemas expertos.*
 
 ---
 
@@ -559,13 +458,6 @@ cd Sistema-Experto-para-Recomendaci-n-de-Plantas-en-Hogares-de-Tierra-del-Fuego
 pip install -r requirements.txt && python app.py
 ```
 
-### Con Makefile (Desarrollo)
-```bash
-# Setup completo profesional
-make quick-setup
-make run
-```
-
 **🌿 ¡Tu planta ideal para Tierra del Fuego te está esperando!**
 
-*Sistema especializado con arquitectura profesional que preserva el patrimonio natural fueguino mientras ayuda a crear hogares más verdes y saludables en el fin del mundo.*
+*Sistema especializado que preserva el patrimonio natural fueguino mientras ayuda a crear hogares más verdes y saludables en el fin del mundo.*
