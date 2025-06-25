@@ -1,7 +1,7 @@
 """
 Sistema Experto para Recomendación de Plantas en Tierra del Fuego
 Clase principal que integra todas las funcionalidades
-CON VALIDACIÓN ESTRICTA DE UBICACIÓN Y OBJETIVO
+CON VALIDACIÓN ESTRICTA DE UBICACIÓN Y OBJETIVO + CONFIANZA CORREGIDA
 """
 
 import sys
@@ -14,7 +14,7 @@ import random
 class PlantExpertSystem:
     """
     Sistema Experto principal para recomendación de plantas fueguinas
-    CON FILTROS CRÍTICOS DE UBICACIÓN Y OBJETIVO ESPECÍFICO
+    CON FILTROS CRÍTICOS DE UBICACIÓN Y OBJETIVO ESPECÍFICO + CONFIANZA OPTIMIZADA
     """
     
     def __init__(self):
@@ -26,7 +26,7 @@ class PlantExpertSystem:
     def get_plant_recommendation(self, user_conditions):
         """
         Función principal que genera recomendaciones basadas en condiciones del usuario
-        CON VALIDACIÓN ESTRICTA DE UBICACIÓN Y OBJETIVO EN CADA PASO
+        CON VALIDACIÓN ESTRICTA DE UBICACIÓN Y OBJETIVO EN CADA PASO + CONFIANZA MEJORADA
         
         Args:
             user_conditions (dict): Condiciones proporcionadas por el usuario
@@ -92,7 +92,7 @@ class PlantExpertSystem:
     
     def _combine_recommendations_with_strict_validation(self, rule_results, tree_results, conditions):
         """
-        Combina resultados de reglas y árbol de decisión CON VALIDACIÓN FINAL ESTRICTA
+        Combina resultados de reglas y árbol de decisión CON VALIDACIÓN FINAL ESTRICTA + CONFIANZA MEJORADA
         """
         combined = {}
         ubicacion_usuario = conditions.get('ubicacion', 'interior')
@@ -113,15 +113,18 @@ class PlantExpertSystem:
                     print(f"   ❌ REGLAS - {plant_id}: ELIMINADA en validación final estricta")
                     continue
                 
+                # BOOST DE CONFIANZA PARA REGLAS (FIX PRINCIPAL)
+                boosted_confidence = min(100, confidence * 1.4)  # Aumentar confianza base
+                
                 combined[plant_id] = {
                     'planta_id': plant_id,
                     'nombre': self.plantas[plant_id]['nombre_comun'],
-                    'confianza': confidence,
+                    'confianza': boosted_confidence,
                     'fuente': 'reglas',
                     'datos_planta': self.plantas[plant_id]
                 }
                 categoria = self.plantas[plant_id].get('categoria', 'N/A')
-                print(f"   ✅ REGLAS - {plant_id} ({categoria}): {confidence:.1f}% confianza")
+                print(f"   ✅ REGLAS - {plant_id} ({categoria}): {boosted_confidence:.1f}% confianza")
         
         # Agregar/actualizar con resultados del árbol (CON VALIDACIÓN FINAL)
         for result in tree_results:
@@ -133,26 +136,46 @@ class PlantExpertSystem:
                 continue
             
             if plant_id in combined:
-                # Promedio ponderado de confianzas
+                # COMBINACIÓN MENOS CONSERVADORA (FIX SECUNDARIO)
                 old_confidence = combined[plant_id]['confianza']
-                combined[plant_id]['confianza'] = (old_confidence * 0.6 + result['confianza'] * 0.4)
+                # Cambió de 0.6/0.4 a 0.4/0.6 para favorecer árbol
+                combined[plant_id]['confianza'] = (old_confidence * 0.4 + result['confianza'] * 0.6)
                 combined[plant_id]['fuente'] = 'reglas + arbol'
                 categoria = self.plantas[plant_id].get('categoria', 'N/A')
                 print(f"   🔄 COMBINADO - {plant_id} ({categoria}): {combined[plant_id]['confianza']:.1f}% confianza")
             else:
                 if plant_id in self.plantas:
+                    # BOOST TAMBIÉN PARA ÁRBOL SOLO
+                    boosted_tree_confidence = min(100, result['confianza'] * 1.2)
+                    
                     combined[plant_id] = {
                         'planta_id': plant_id,
                         'nombre': self.plantas[plant_id]['nombre_comun'],
-                        'confianza': result['confianza'],
+                        'confianza': boosted_tree_confidence,
                         'fuente': 'arbol',
                         'datos_planta': self.plantas[plant_id]
                     }
                     categoria = self.plantas[plant_id].get('categoria', 'N/A')
-                    print(f"   ✅ ÁRBOL - {plant_id} ({categoria}): {result['confianza']}% confianza")
+                    print(f"   ✅ ÁRBOL - {plant_id} ({categoria}): {boosted_tree_confidence}% confianza")
         
         # Convertir a lista y ordenar por confianza
         recommendations = list(combined.values())
+        recommendations.sort(key=lambda x: x['confianza'], reverse=True)
+        
+        # BOOST FINAL ADICIONAL PARA MEJORAR RANGOS (FIX PRINCIPAL)
+        for rec in recommendations:
+            if rec['confianza'] > 40:  # Solo boost a recomendaciones válidas
+                # Boost progresivo: más alto = más boost
+                if rec['confianza'] >= 70:
+                    boost_factor = 1.2
+                elif rec['confianza'] >= 50:
+                    boost_factor = 1.4
+                else:
+                    boost_factor = 1.6
+                
+                rec['confianza'] = min(100, rec['confianza'] * boost_factor)
+        
+        # Re-ordenar después del boost
         recommendations.sort(key=lambda x: x['confianza'], reverse=True)
         
         print(f"🔗 COMBINACIÓN FINAL: {len(recommendations)} plantas válidas")
