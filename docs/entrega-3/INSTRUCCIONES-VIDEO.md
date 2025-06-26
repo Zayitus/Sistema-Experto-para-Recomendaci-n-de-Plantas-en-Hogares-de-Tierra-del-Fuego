@@ -3,6 +3,7 @@
 ## ⚠️ IMPORTANTE PARA EL EVALUADOR
 
 ### 🔗 LINK DIRECTO AL VIDEO: https://drive.google.com/file/d/1YeJwF9kql1SlU-62QVTUqzGbT6jCfGkJ/view?usp=sharing
+### [🎬 Ver en YouTube - 7 minutos](https://youtu.be/KuegEDhOJkM)
 
 ### 📱 CÓMO ACCEDER:
 1. **Hacer clic** en el link de arriba
