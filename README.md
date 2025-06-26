@@ -273,9 +273,10 @@ curl http://localhost:5000/api/plant/lenga
 ## 🎥 Video Demostrativo
 
 **[🎬 Ver Video Explicativo - 7 minutos](https://drive.google.com/file/d/1YeJwF9kql1SlU-62QVTUqzGbT6jCfGkJ/view?usp=sharing)**
-
 > **Nota**: El video se encuentra alojado en Google Drive para preservar la calidad HD y garantizar acceso fluido durante la evaluación.
 
+**[🎬 Ver en YouTube - 7 minutos](https://youtu.be/KuegEDhOJkM)**
+> 
 **Contenido del video:**
 - Presentación del problema específico de Tierra del Fuego
 - Demostración completa del sistema funcionando  
